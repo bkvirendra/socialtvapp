@@ -1,0 +1,3 @@
+Procedure for adding TV Show:
+
+1. dump_tv_shows() 

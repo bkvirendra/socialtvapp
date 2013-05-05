@@ -1,0 +1,114 @@
+{% include 'header.html' %}
+ <meta name="description" content="Easiest way to findout what to watch on TV! Findout whats trending on TV rightnow!" />
+<meta name="keywords" content="socialtv, shows, tv" />
+<meta name="robots" content="index, follow" />
+        <style type="text/css">
+          body, html {
+            font-family: 'Merienda', cursive;
+          }
+          #selector {
+            margin-top: 30px;
+            margin-left: 29%;
+            margin-bottom: -33px;
+          }
+          #header {
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: -10px;
+          }
+        </style>
+    </head>
+    <body>
+{% include 'navbar.html' %}
+{% include 'selector.html' %}
+{% load extra %}
+  <div class="masthead jumbotron">
+      <div class="container-fluid">
+        <br>
+        <h2 id="header">Trending</h2>
+        <hr>
+        <div class="row-fluid" id="recommendations">
+          {% for show in shows %}
+            <a href="/show/{{ show.title.split|join:"-" }}">
+                  <div class="item">
+                      <img class="captify" rel="caption{{ forloop.counter }}" src="{{ show.image_normal }}">
+                      <div id="caption{{ forloop.counter }}">
+                        <span id="title">{{ show.title }}</span><br>
+                        <span><strong>Starring: </strong><br>{{ show.regular_cast|return_2_stars:"0" }}</span>
+                        <br>
+                        <span><strong>Creator:</strong><br>{{ show.program_creator }}</span>
+                        <br>
+                        {% if show.rating  %}
+                            <div class="rating" data-score="{{ show.rating|eval_return_rating:"0" }}"></div>
+                        {% endif %}
+                      </div>
+                  </div>
+            </a>
+          {% endfor %}
+        </div>
+      
+      </div>
+
+  </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="{{ STATIC_URL }}js/main.js"></script>
+
+    <script src="{{ STATIC_URL }}js/vendor/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.masonry.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.imagesloaded.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.raty.js"></script>
+    <script src="{{ STATIC_URL }}js/captify.js"></script>
+<script>
+$('.rating').raty({
+  number: 5,
+  score: function() {
+    return $(this).attr('data-score');
+  }
+});
+
+$(document).ready(function(){
+
+  $(function(){
+ 
+    var $container = $('#recommendations');
+
+    $container.imagesLoaded( function(){
+      $container.masonry({
+        itemSelector : '.item',
+        isAnimated: !Modernizr.csstransitions
+        //columnWidth : 200
+      });
+    });
+   
+  });
+
+$(function(){
+  $('img.captify').captify({
+    // all of these options are... optional
+    // ---
+    // speed of the mouseover effect
+    speedOver: 'fast',
+    // speed of the mouseout effect
+    speedOut: 'normal',
+    // how long to delay the hiding of the caption after mouseout (ms)
+    hideDelay: 300, 
+    // 'fade', 'slide', 'always-on'
+    animation: 'slide',   
+    // text/html to be placed at the beginning of every caption
+    prefix: '',   
+    // opacity of the caption on mouse over
+    opacity: '0.7',         
+    // the name of the CSS class to apply to the caption box
+    className: 'caption-bottom',  
+    // position of the caption (top or bottom)
+    position: 'bottom',
+    // caption span % of the image
+    spanWidth: '100%'
+  });
+});
+
+});
+</script>
+{% include 'footer.html' %}

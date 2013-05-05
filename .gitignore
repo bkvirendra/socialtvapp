@@ -1,0 +1,5 @@
+*.pyc
+settings.py
+production.py
+cre.txt
+.dropbox

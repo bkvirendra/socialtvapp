@@ -1,0 +1,504 @@
+{% include 'header.html' %}
+
+        <!-- OG meta tags for tv show -->
+        <meta property="og:site_name" content="Socialtv" />
+        <meta property="og:title" content="{{ title }}" />
+        <meta property="fb:app_id"      content="471560366238631" />
+        <meta property="og:type"        content="socialtv_app:show" />
+        <meta property="og:url"         content="http://socialtvapp.me{{ request.get_full_path }}" />
+        <meta property="og:image"       content="{{ show.image_normal }}" />
+        <meta property="og:description"       content="{{ description }}" />
+
+        <style>
+        #movie_box {
+          margin-left: 13%;
+          border: 1px solid black;
+          background: whitesmoke;
+          -webkit-box-shadow: 0px 0px 35px rgba(50, 50, 50, 0.52);
+          -moz-box-shadow:    0px 0px 35px rgba(50, 50, 50, 0.52);
+          box-shadow:         0px 0px 35px rgba(50, 50, 50, 0.52);
+        }
+        #over_container {
+          padding: 20px;
+        }
+        #s_title {
+          font-size: 19px;
+        }
+        .s_box { 
+           position: relative; 
+           width: 100%; /* for IE 6 */
+           margin-bottom: 1%;
+        }
+
+        h2 { 
+          position: absolute; 
+          width: 100%;
+          top: 64%;
+        }
+        h2 span, #s_title { 
+           color: white; 
+           background: rgb(0, 0, 0); /* fallback color */
+           background: rgba(0, 0, 0, 0.7);
+           padding: 0.6% 1.6% 1.1% 0.1%;
+        }
+        #running_time, #loves, #official {
+          float: right;
+        }
+        #banner_img {
+          width: 100%;
+
+        }
+        #overview {
+          line-height: 1.7em;
+        }
+        #genre, #creator, #casting, #ratings_container, #season {
+          margin-bottom: 8px;
+        }
+        #show_details {
+          position: relative;
+        }
+        .service_icons {
+          width: 30px;
+          height: 30px;
+        }
+        #itunes, #netflix, #hulu, #amazon {
+          border: 1px solid #fff;
+        }
+        #loves {
+          border: 0.6px solid #fff;
+          border-radius: 7px;
+          text-align: center;
+          background-color: #1c5380;
+          background-color: rgba(6,54,95,0.35);
+          -webkit-box-shadow: inset 0 0 1px rgba(6,54,95,0.8);
+          -moz-box-shadow: inset 0 0 1px rgba(6,54,95,0.8);
+          box-shadow: inset 0 0 1px rgba(6,54,95,0.8);
+          margin-top: 1%;
+          margin-right: 2%;
+        }
+        #loves_count {
+          position: relative;
+          z-index: 25;
+          display: inline-block;
+          padding: 0 7px;
+          min-width: 8px;
+          color: #fff;
+          margin-bottom: 4px;
+          margin-top: -5px;
+          background: #1c5380;
+          pointer-events: none;
+          font-size: 12px;
+          -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.1), inset 0 1px 1px rgba(0,0,0,0.2);
+          -moz-box-shadow: 0 1px 0 rgba(255,255,255,0.1), inset 0 1px 1px rgba(0,0,0,0.2);
+          box-shadow: 0 1px 0 rgba(255,255,255,0.1), inset 0 1px 1px rgba(0,0,0,0.2);
+        }
+
+        #loves_picture {
+          margin-top: -3px;
+          cursor: pointer;
+        }
+
+        #over_container {
+          border: 1px solid black;
+          margin: 10px;
+          font-size: 13px;
+          padding: 15px;
+        }
+        #watch_links {
+          margin-top: 12%;
+        }
+        .jumbotron .btn {
+          font-size: 12px;
+          padding: 10px 12px;
+          margin-bottom: 10px;
+        }
+        #watch_links, #know_links {
+          border: 1px solid black;
+          margin-left: 76.6%;
+          margin-right: 1.5%;
+          padding: 5px;
+          padding-left: 10px;
+          text-align: center;
+        }
+        #know_links {
+          margin-top: 1%;
+        }
+        #youtube_preview {
+          margin-top: 1%;
+          text-align: center;
+        }
+        a {
+          color: #08c;
+        }
+        #official {
+          font-weight: bold;
+        }
+        .news_pics {
+          width: 100px;
+          height: 120px;
+          padding: 10px;
+          float: left;
+        }
+        .news_text {
+          padding-top: 9px;
+          padding-left: 130px;
+          padding-right: 10px;
+        }
+        .publisher {
+          float: right;
+          padding: 5px;
+        }
+        #torrent_title , #news_title, #similar_title {
+            font-size: 24px;
+            padding: 12px;
+            text-align: center;
+            padding-top: 18px;
+        }
+        .jumbotron {
+            margin: 70px 0;
+            margin-bottom: -45px;
+        }
+        #torrentz_links_box, #similar_shows_box, #news_box {
+          background: whitesmoke;
+          -webkit-box-shadow: 0px 0px 35px rgba(50, 50, 50, 0.52);
+          -moz-box-shadow:    0px 0px 35px rgba(50, 50, 50, 0.52);
+          box-shadow:         0px 0px 35px rgba(50, 50, 50, 0.52);
+        }
+        .each_show {
+          text-align: center;
+          font-size: 19px;
+          padding: 6px;
+        }
+        </style>
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/colorbox.css">
+    </head>
+    <body>
+    {% include 'navbar.html' %}
+    {% include 'selector.html' %}
+
+    <div class="masthead jumbotron">
+      <div class="container">
+        <div class="row-fluid">
+          <!-- box wrapper -->
+          <div class="span9" id="movie_box">
+
+            <!-- the banner section -->
+              <div class="s_box">
+                {% if not show.banner %}
+                    <img id="banner_img" height=140 width=758 src="http://getglue.com/img/pages/feed/feed_image_movies.png" alt="{{ show.title }}">
+                {% else %}
+                    <img id="banner_img" height=140 width=758 src="{{ show.banner }}" alt="{{ show.title }}">
+                {% endif %}
+                <h2><span id="s_title">&nbsp;&nbsp;{{ show.title }}</span></h2>
+              </div>
+              <!-- ends here  -->
+
+              <!-- the details container -->
+              <div class="span9" id="over_container">
+                    <div id="details">
+                      <div id="show_details">
+
+                         {% if rating %}
+                              <div id="ratings_container">
+                                  <span id="ratings_title"><strong>Ratings: </strong><div style="display: inline-block;" id="rating"></div></span>
+                              </div>
+                          {% endif %}
+
+                        <div id="genre"><strong>Genre: </strong>{{ genre }}</div>
+
+                        {% if show.official_website != "-" %}
+                            <span id="official"><a href="{{ show.official_website }}">Official Website</a></span>
+                        {% endif %}
+                        <div id="creator"><strong>Created by: </strong> {{ show.program_creator }}</div>
+
+                        <div id="running_time"><strong>Running Time: </strong> {{ show.episode_running_time }} mins</div>
+
+                        <div id="casting"><strong>Cast: </strong> {{ cast }}</div>
+
+                        <div id="season">
+                          <span><strong>Current Season:</strong> {{ show.number_of_seasons }}</span> <span style="margin=left:10px; float:right;"><strong>Total Episodes:</strong> {{ show.number_of_episodes }}</span>
+                        </div>
+
+                        <div id="overview"><strong>Overview: </strong><br>{{ description }}</div>
+
+                      </div>
+                    </div>
+                </div>
+                <!-- the details container ends here -->
+
+                <!-- the section on right -->
+                <div id="right_container">
+
+                      <div id="loves">
+                          <div id="love_img">
+                            <span>
+                                {% if not is_loved %}
+                                        <img id="loves_picture" src="{{  STATIC_URL }}img/glyph-heart.png">
+                                {% endif %}
+                                {% if  is_loved %}
+                                        <img id="loves_picture" src="{{  STATIC_URL }}img/glyph-heart-liked.png">
+                                {% endif %}
+                            </span>
+                          </div>
+                          <span id="loves_count"><strong>{{ loves }}</strong></span>
+                      </div>
+
+                </div>
+
+                <!-- these links provide users to watch the TV show -->
+                <div id="watch_links">Watch it now at:<br>
+
+                  {% if show.itunes_link != "-" %}
+                      <span id="itunes"><a href="{{ show.itunes_link }}" target="_blank"><img class="service_icons" src="{{ STATIC_URL }}icons/itunes.png"></a></span> 
+                  {% endif %}
+
+                  {% if show.netflix != "-" %}
+                      <span id="netflix"><a href="{{ show.netflix }}" target="_blank"><img class="service_icons" src="{{ STATIC_URL }}icons/netflix.png"></a></span>
+                  {% endif %}
+
+                  {% if show.hulu_link != "-" %}
+                      <span id="hulu"><a href="{{ show.hulu_link }}" target="_blank"><img class="service_icons" src="{{ STATIC_URL }}icons/hulu.jpg"></a></span>
+                  {% endif %}
+
+                  {% if show.amazon_link != "-" %}
+                      <span id="amazon"><a href="{{ show.amazon_link }}" target="_blank"><img class="service_icons" src="{{ STATIC_URL }}icons/amazon.jpg"></a></span>
+                  {% endif %}
+
+                </div>
+
+                <!-- know more about the show -->
+                <div id="know_links">Find out more at: <br>
+
+                  {% if show.wikipedia != "-" %}
+                      <span id="wikipedia"><a href="{{ show.wikipedia }}" target="_blank"><img class="service_icons" src="{{ STATIC_URL }}icons/Wikipedia.png"></a></span>
+                  {% endif %}
+
+                  {% if show.imdb != "-" %}
+                      <span id="imdb"><a href="{{ show.imdb }}" target="_blank"><img class="service_icons" src="{{ STATIC_URL }}icons/imdb.jpg"></a></span>
+                  {% endif %}
+
+                </div>
+
+                <div id="youtube_preview">
+                    <a class='youtube btn' href="{{ show.trailer_link }}" title="{{ show.title }} : Preview">Watch Trailor</a>
+                </div>
+
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- download section -->
+      <div class="masthead jumbotron" id="torrentz_links_box">
+            <div class="span9" style="margin-bottom:2%; border: 1px solid black; margin-left: 13.3%; background-color: whitesmoke;">
+              <div id='torrent_title'>Download links (latest episodes)</div><hr style='margin:10px;'>
+              <div id="torrent_shows" class="span8">
+
+              </div>
+              
+            </div>
+      </div>
+
+      <!-- similar shows section -->
+      <div class="masthead jumbotron" id="similar_shows_box">
+            <div class="span9" style="margin-bottom:2%; border: 1px solid black; margin-left: 13.3%; background-color: whitesmoke;">
+              <div id='similar_title'>Similar Shows</div><hr style='margin:10px;'>
+              <div id="similar_shows" class="span8">
+
+              </div>
+            </div>
+      </div>
+
+
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="{{ STATIC_URL }}js/vendor/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.masonry.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.imagesloaded.min.js"></script>
+    <script src="{{ STATIC_URL }}js/captify.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.colorbox-min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.raty.js"></script>
+    <script src="{{ STATIC_URL }}js/main.js"></script>
+
+<script type="text/javascript">
+
+  // show info
+  
+  var None = false;
+  var title = "{{ show.title }}";
+  var tv_show_id = {{ show.id }};
+  var user_id = {{ request.user.id }};
+  var can_love = '{{ is_loved }}';
+  var is_authenticated = "{{ user.is_authenticated }}";
+
+  $(document).ready(function(){
+
+    function call_me_maybe() {
+      // body...
+          // captify 
+          $(function(){
+            $('img.captify').captify({
+              // all of these options are... optional
+              // ---
+              // speed of the mouseover effect
+              speedOver: 'fast',
+              // speed of the mouseout effect
+              speedOut: 'normal',
+              // how long to delay the hiding of the caption after mouseout (ms)
+              hideDelay: 300, 
+              // 'fade', 'slide', 'always-on'
+              animation: 'slide',   
+              // text/html to be placed at the beginning of every caption
+              prefix: '',   
+              // opacity of the caption on mouse over
+              opacity: '0.7',         
+              // the name of the CSS class to apply to the caption box
+              className: 'caption-bottom',  
+              // position of the caption (top or bottom)
+              position: 'bottom',
+              // caption span % of the image
+              spanWidth: '100%'
+            });
+          });
+
+          // layout 
+          $(function(){
+            var $container = $('#similar_shows');
+            $container.imagesLoaded( function(){
+              $container.masonry({
+                itemSelector : '.item',
+                isAnimated: !Modernizr.csstransitions
+              });
+            });
+          });
+    }
+
+      $(function(){
+        var url = "/torrentz/";
+        $("#torrent_shows").html("<div id='loader'><br><center><img src='{{ STATIC_URL }}img/loader.gif'></center><br></div>");
+          $.ajax({ // create an AJAX call...
+                            data: {
+                              "title": title
+                            }, // get the form data
+                            type: "GET", // GET or POST
+                            url: url,
+                            dataType: 'json',
+                            success: function(response) {
+                              var arr = [];
+                              jQuery.each(response, function(k, v){
+                                var item = "<div class='each_show'><span>" + v.title + "&nbsp;&nbsp;  \
+                                   Season: " + v.season + "&nbsp;&nbsp;Episode: " + v.episode + " \
+                                   (<a href=" + v.magnet + ">click here</a>)</span></div>";
+                                arr.push(item);
+                              });
+                              $("#torrent_shows").html(arr);
+                            }
+          });
+      });      
+
+      $(function(){
+          var url = "/similar_shows/";
+          $("#similar_shows").html("<div id='loader'><br><center><img src='{{ STATIC_URL }}img/loader.gif'></center><br></div>");
+          $.ajax({ // create an AJAX call...
+                            data: {
+                              "genres": "{{ genre_complete }}",
+                              "show_id": tv_show_id
+                            }, // get the form data
+                            type: "GET", // GET or POST
+                            url: url,
+                            dataType: 'json',
+                            success: function(response) {
+                              // 
+                              var arr = [];
+                              var counter = 0;
+                              try {
+                                var cast = eval(v.regular_cast).slice(0,2);
+                              } catch (e) {
+                                var cast = "";
+                              }
+                              jQuery.each(response, function(k, v){
+                                counter += 1;
+                                var show = "<a href='/show/" + v.title.replace(" ","-") + "'> \
+                                  <div class='item'> \
+                                      <img class='captify' rel='caption" + counter + "'' src='" + v.image_normal + "'> \
+                                      <div id='caption" + counter + "'> \
+                                        <span id='title'>" + v.title + "</span><br> \
+                                        <span><strong>Starring: </strong><br>" + cast + "</span> \
+                                        <br> \
+                                        <span><strong>Creator:</strong><br>" + v.program_creator + "</span> \
+                                        <br> \
+                                      </div> \
+                                  </div> \
+                                  </a>";
+                                  arr.push(show);
+                              });
+                              $("#similar_shows").html(arr);
+                              call_me_maybe();
+                            }
+        });
+      });
+
+  });
+
+  $("#rating").raty({
+    'score': {{ rating }},
+    'number': 10,
+    'readOnly': true,
+    'noRatedMsg': 'Not yet rated!'
+  });
+
+  $(".youtube").colorbox({iframe:true, innerWidth:650, innerHeight:400});
+
+  $("#loves_picture").click(function(){
+      if (can_love == "False" && is_authenticated == "True") {
+          $("#loves_picture").attr("src","{{ STATIC_URL }}img/glyph-heart-liked.png");
+          $.ajax({ // create an AJAX call...
+                      data: {'csrfmiddlewaretoken': "{{ csrf }}", 
+                          'show':tv_show_id, 
+                          'url': "http://socialtvapp.me{{ request.get_full_path }}", 
+                          'user':user_id}, // get the form data
+                      type: "POST", // GET or POST
+                      url: "/love/", // the file to call
+                      success: function(response) {
+                          if (response == '1') {
+                            // handler for is loved
+                            // replace the heart icon with red-hear icon
+                            //$("#loves_picture").attr("src","{{ STATIC_URL }}img/glyph-heart-liked.png");
+                            // increment the count by 1
+                            var count = parseInt($("#loves_count").text());
+                            count = count + 1; 
+                            $("#loves_count").text(count.toString());
+                            can_love = "True";
+                          }
+                      }
+            });
+      } else if (can_love == "True" && is_authenticated == "True") {
+        // user has already liked this show
+          $.ajax({ // create an AJAX call...
+                      data: {'csrfmiddlewaretoken': "{{ csrf }}", 
+                          'show':tv_show_id, 
+                          'delete': "True",
+                          'user':user_id}, // get the form data
+                      type: "POST", // GET or POST
+                      url: "/love/", // the file to call
+                      success: function(response) {
+                          if (response == '1') {
+                            // handler for is loved
+                            // replace the heart icon with red-hear icon
+                            $("#loves_picture").attr("src","{{ STATIC_URL }}img/glyph-heart.png");
+                            // increment the count by 1
+                            var count = parseInt($("#loves_count").text());
+                            count = count - 1; 
+                            $("#loves_count").text(count.toString());
+                            can_love = "False";
+                          }
+                      }
+            });
+        //$("#loves_picture").attr("src","{{ STATIC_URL }}img/glyph-heart.png");
+      } else if (is_authenticated == "False") {
+          alert("You need to be logged in to view love the tv show");
+      } 
+  });
+</script>
+{% include 'footer.html' %}

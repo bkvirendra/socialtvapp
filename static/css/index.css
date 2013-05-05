@@ -1,0 +1,19 @@
+body{
+    background: url(../img/tvshows.jpg);
+    background-size:cover;
+}
+#login-container{
+        background-color: rgba(0, 0, 0, 0.45);
+        padding: 2%;
+        -webkit-border-radius :13px;
+}
+#headline{
+    color: white
+}
+#headline + p{
+    color: rgba(255,255,255,0.9);
+}
+h1, body, html {
+      font-family: 'Merienda', "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: white;
+}

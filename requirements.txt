@@ -1,0 +1,10 @@
+Unipath==0.2.1
+Django==1.4.5
+django-braces==0.2.2
+jsonfield==0.9.4
+psycopg2==2.4.6
+requests==0.14.2
+xmltodict==0.4.4
+South==0.7.6
+django-extensions==1.1.0
+lxml==3.1.0

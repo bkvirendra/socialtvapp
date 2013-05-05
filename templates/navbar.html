@@ -1,0 +1,39 @@
+      <!-- nav bar -->
+      <div class="navbar navbar-fixed-top">
+      <div class="navbar">
+              <div class="navbar-inner">
+                <div class="container">
+                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </a>
+                  <a class="brand vips" href="/"><i class="icon-home icon-white"></i>SocialTV <span style="font-size: 12px;" id="beta">beta</span></a>
+                  <div class="nav-collapse collapse navbar-responsive-collapse">
+                    <!--  SEARCH  -->
+                    <form class="navbar-search pull-left" id="upper-search-box" action="/search">
+                      <!--<a class="brand " ><i class="icon-search icon-white"></i> </a>-->
+                      <div class="icon-search"></div>
+                      <input required type="text" class="search-query span5" id="search" name="q" placeholder="Search for TV Shows">
+                      <input type="hidden" id="search-id" />
+                        <p id="search-description"></p>
+                    </form>
+                    {% if request.user.is_authenticated %}
+                        <ul class="nav pull-right">
+                          <li>
+                            <span class="navbar-text vips">Welcome, {{ name }}</span>&nbsp;
+                          </li>
+                          <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="/logout?logout=true">Sign Out</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                    {% endif %}
+                  </div><!-- /.nav-collapse -->
+                </div>
+              </div><!-- /navbar-inner -->
+            </div>
+      </div>
+      <!-- navbar -->

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>SocialTV >> Easiest way to findout what to watch on TV!</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+         <meta name="description" content="Easiest way to findout what to watch on TV! Findout whats trending on TV rightnow!" />
+        <meta name="keywords" content="socialtv, shows, tv" />
+        <meta name="robots" content="index, follow" />
+        <link href='http://fonts.googleapis.com/css?family=Merienda' rel='stylesheet' type='text/css'>
+
+         <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/index.css">
+
+        <script src="{{ STATIC_URL }}js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <style type="text/css">
+.signin-button.facebook {
+background: #3b5998;
+}
+.buffer-signin, .signin-button {
+position: relative;
+display: inline-block;
+text-align: left;
+margin: 0 0 8px;
+font-size: 14px;
+font-weight: normal;
+color: #fff !important;
+width: 220px;
+line-height: 40px;
+border: 0 !important;
+padding: 0 !important;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+-moz-background-clip: padding;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+.signin-button::before {
+content: "";
+display: block;
+border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+width: 99%;
+position: absolute;
+top: 0;
+left: 2px;
+}
+.signin-button.facebook i {
+background-position: 0 -40px;
+}
+.buffer-signin i, .signin-button i {
+background: url('../static/img/signin-buttonsb.png') no-repeat;
+border-right: 1px solid rgba(0, 0, 0, 0.2);
+display: block;
+float: left;
+width: 40px;
+height: 40px;
+}
+.buffer-signin, .signin-button {
+text-align: left;
+font-size: 14px;
+font-weight: normal;
+color: #fff !important;
+line-height: 40px;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+.buffer-signin > span, .signin-button > span {
+position: static;
+border-left: 1px solid rgba(255, 255, 255, 0.2);
+padding: 12px 10px;
+}
+.buffer-signin, .signin-button {
+text-align: left;
+font-size: 14px;
+font-weight: normal;
+color: #fff !important;
+line-height: 40px;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+.signin-button.facebook:hover{
+    background:#4c70ba;
+    text-decoration: none;
+}
+.signin-button.facebook:active{
+  background-color:rgb(7, 50, 139);
+  border:1px inset #1d659f;
+  color:#e0ffaf;
+  padding:4px 2px 2px 4px;
+  text-decoration:none;
+}
+#headline {
+    color: #fff;
+text-shadow: 1px 1px 0px #bad3ed;
+font-weight: bold;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#about {
+    text-align: center;
+    font-size: 16px;
+}
+a {
+    color: #fff;
+}
+a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+        </style>
+    </head>
+    <body>
+    <div class="container-narrow">
+
+      <div class="jumbotron" id="login-container" style="text-align:center;">
+           <img title="SocialTV Logo" style="opacity: 0.5;" src="{{ STATIC_URL }}img/cartoon tv slate - 75.jpg">
+           <h1 id="headline"><strong>SocialTV</strong><span style="font-size:16px;">beta</span></h1><br>
+           
+           <p style="font-size: 24px;" class="lead">Easiest way to findout what to watch on TV!</p>
+            <p style="font-size: 24px;" class="lead">Findout whats trending on TV rightnow!</p>
+            <p style="font-size: 16px;" class="lead">** Currently in beta</p>
+           <a href="/authenticate" class="signin-button facebook" target="_top"><i></i> <span>Sign In with Facebook</span></a>
+        <br>
+        <div id="about">
+            <p>a <a href="http://www.meetup.com/Pune-GDG/events/88636722/" title="hackthon" target="_blank">#Hackathon</a> production</a></p><br>
+            <a href="/about-us" title="about us">about the creators</a>
+        </div>
+
+      </div>
+
+    </div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38621026-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

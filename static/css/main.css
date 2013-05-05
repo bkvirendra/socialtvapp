@@ -1,0 +1,278 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 50px 0;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+
+/* Virendra Rajput */
+
+#container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.item {
+  width: 160px;
+  margin: 11px;
+  float: left;
+}
+ 
+/*Media Queries*/
+@media only screen and (max-width : 1199px),
+only screen and (max-device-width : 1199px){
+    #recommendations {
+        width: 1000px;
+    }
+    h2 {
+        position: absolute; 
+        width: 100%;
+        top: 60%;
+    }
+}
+ 
+@media only screen and (max-width : 999px),
+only screen and (max-device-width : 999px){
+    #recommendations {
+        width: 800px;
+    }
+    h2 { 
+        position: absolute; 
+        width: 100%;
+        top: 50%;
+    }
+}
+ 
+@media only screen and (max-width : 799px),
+only screen and (max-device-width : 799px){
+    #recommendations {
+        width: 600px;
+    }
+    h2 { 
+        position: absolute; 
+        width: 100%;
+        top: 40%;
+    }
+}
+ 
+@media only screen and (max-width : 599px),
+only screen and (max-device-width : 599px){
+    #recommendations {
+        width: 400px;
+    }
+}
+ 
+@media only screen and (max-width : 399px),
+only screen and (max-device-width : 399px){
+    #recommendations {
+        width: 200px;
+    }
+}
+
+/**** Transitions ****/
+
+.masonry,
+.masonry .masonry-brick {
+  -webkit-transition-duration: 0.7s;
+     -moz-transition-duration: 0.7s;
+      -ms-transition-duration: 0.7s;
+       -o-transition-duration: 0.7s;
+          transition-duration: 0.7s;
+}
+
+.masonry {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.masonry .masonry-brick {
+  -webkit-transition-property: left, right, top;
+     -moz-transition-property: left, right, top;
+      -ms-transition-property: left, right, top;
+       -o-transition-property: left, right, top;
+          transition-property: left, right, top;
+}
+
+.caption-top,.caption-bottom{
+  color:#fff;
+  padding:1.0em;
+  font-weight:bold;
+  font-size:11px;
+  cursor:default;
+  border:0 solid #334143;
+  background:#000;
+  text-shadow:1px 1px 0 #202020
+}
+
+.caption-top{border-width:0 0 8px 0}
+.caption-bottom{border-width:8px 0 0 0}
+.caption a,.caption a{border:0 none;text-decoration:none;background:#000;padding:.3em}
+.caption a:hover,.caption a:hover{background:#202020}
+.caption-wrapper{float:left}
+br.c{clear:both}
+body{background:#fff;font-family:'trebuchet MS',arial,verdana,sans-serif;font-size:.85em;margin:0;padding:3em 5em}#wrapper{width:550px}code{padding:1em;background:#fdf6f2;border-top:1px solid #e3cbbb;border-bottom:1px solid #e3cbbb;display:block;color:#3b3430;overflow:hidden}code strong{color:#ca3000;border:1px solid #e3cbbb;padding:.5em;background:#fff}code .comment{color:#9c8c83}h1{font-size:2.2em;font-family:"Palatino Linotype",Palatino,Palladio,"URW Palladio L","Book Antiqua",Baskerville,"Bookman Old Style","Bitstream Charter","Nimbus Roman No9 L",Garamond,"Apple Garamond","ITC Garamond Narrow","New Century Schoolbook","Century Schoolbook","Century Schoolbook L",Georgia,serif;font-style:italic;color:#202020}h1 .ver{font-size:.5em}h2{font-size:1.4em}h3{font-size:1.2em;clear:both;font-family:georgia;color:#6c6361;font-weight:normal;text-transform:uppercase}p{line-height:180%}.note{font-family:times,serif;color:#988d81}a img{border:3px solid #ece7e6;margin-right:8px;margin-bottom:8px}.images a{background:0;padding:0}
+
+/* home.css */
+
+.navbar-search .search-query {
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+border-radius: 0px;
+}
+
+a{
+    color: black
+}
+body{
+    background: #f7f5f5 url(../img/paper.jpg) repeat;
+}
+
+/*SEARCH BAR*/
+.navbar-search .search-query {
+    padding-left: 29px !important;
+}
+.navbar-search {
+    position: relative;
+}
+.navbar-search .icon-search {
+    position: absolute;
+    top: 7px;
+    left: 11px;
+}
+#upper-search-box{
+    margin-left: 17%;
+}
+#main-option-list li a{
+    text-align: left;
+}
+  #search-icon {
+    float: left;
+    height: 32px;
+    width: 32px;
+  }
+  #search-description {
+    margin: 0;
+    padding: 0;
+  }
+
+.navbar-search {
+margin-top: 8px;
+}
+
+/* autocompletee */
+.ui-autocomplete img { 
+  padding: 4px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+  border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; 
+}
+
+.ui-autocomplete li {
+  position: relative; 
+  height: 130px; width: 690px;
+  padding: 5px; border: 1px solid #eee; }
+.ui-autocomplete li a {height: 120px; }
+.ui-autocomplete li img { max-height: 110px; 
+  width: 87px;
+  position: absolute; top: 2px; left: 2px;}
+.ui-autocomplete li a span {position: absolute; top: 0px; left: 100px; 
+  padding-left: 10px; width: 280px; border-left: 1px solid #eee;}
+.ui-autocomplete li a span small {line-height: 1.1em;}
+
+          #selector {
+            margin-top: 30px;
+            margin-left: 29%;
+            margin-bottom: -33px;
+          }
+          .btn {
+            padding: 7px 8px;
+            line-height: 20px;
+          }
+          .btn-group + .btn-group {
+            margin-left: 11px;
+          }
+          #genre_title {
+            margin-left: 1%;
+            font-size: 150%;
+          }
+          #title {
+            font-weight: bold;
+            font-size: 16px;
+          }
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom:20px; /* this needs to be bigger than footer height*/
+}
+
+.footer {
+  position: relative;
+  margin-top: -20px; /* negative value of footer height */
+  clear:both;
+  padding-top:20px;
+  margin-bottom: -2%;
+  text-align: center;
+} 
+
+a img {
+  border: none;
+  }
+
+body, html {
+      font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+}
+
+.vips {
+  font-family: 'Merienda', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.navbar .nav > li {
+float: left;
+padding-top: 5px;
+}
+
+#UnauthCallout {
+width: 60%;
+padding-top: 10px;
+margin-left: 20%;
+margin-top: 5%;
+height: 70px;
+margin-bottom: -40px;
+}
