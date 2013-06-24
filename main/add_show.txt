@@ -8,6 +8,8 @@ Create a new DB, and add the DB name and DB user, to the settings.py
 
 then, setup the migrations using South. This can be done with:
 
+$ export DJANGO_SETTINGS_MODULE=socialtv.settings
+
 $ python manage.py syncdb
 
 $ python manage.py schemamigration main --initial
