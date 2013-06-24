@@ -7,6 +7,7 @@ import ast
 import requests
 import logging
 import random
+import xmltodict
 
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
 from django.shortcuts import render_to_response
@@ -47,7 +48,7 @@ def index(request, template="home.html"):
 		titles.extend([title.get('title') for title in shows_container[genre]])
 	return render_to_response(template, {'x':shows_container, \
 		'genres':genres, \
-		'title': "Explore TV shows"}, context_instance=RequestContext(request))
+		'title': "Explore TV shows | SocialTV"}, context_instance=RequestContext(request))
 
 def about(request, template="about_us.html"):
 	if not request.user.is_authenticated():
@@ -176,7 +177,7 @@ def home(request, template="home.html"):
 	return render_to_response(template, {'x':shows_container, \
 		'genres':genres, \
 		'name': name,\
-		'title': "Explore TV shows"}, context_instance=RequestContext(request))
+		'title': "Explore TV shows | SocialTV"}, context_instance=RequestContext(request))
 
 def torrentz(request):
 	if request.GET.get("title"):
@@ -198,6 +199,7 @@ def trending(request, template="trending.html"):
 	except Exception, e:
 		name = ""
 		logging.exception(e)
+	## pull the trending shows
 	try:
 		shows = tv_show.objects.values('title','image_thumbnail','image_normal',\
 			'regular_cast','genre','program_creator','rating').order_by('-likes').all()[:50]
@@ -205,7 +207,7 @@ def trending(request, template="trending.html"):
 		logging.exception(e)
 	return render_to_response(template, {"shows":shows, \
 		'name': name, \
-		'title':"Trending TV Shows"}, context_instance=RequestContext(request))
+		'title':"Trending TV Shows | SocialTV"}, context_instance=RequestContext(request))
 
 def genre(request, alias=False, template="genre.html"):
 	try:
