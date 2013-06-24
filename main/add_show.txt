@@ -1,3 +1,26 @@
 Procedure for adding TV Show:
 
-1. dump_tv_shows() 
+Make sure you have installed all the requirements, using
+
+$ pip install -r requirements.txt
+
+Create a new DB, and add the DB name and DB user, to the settings.py
+
+then, setup the migrations using South. This can be done with:
+
+$ python manage.py syncdb
+
+$ python manage.py schemamigration main --initial
+
+$ python manage.py migrate main
+
+Now you have finished setting up South.
+
+Then you need to start the django shell and import the main.tv_shows module. This can be done using,
+
+$ python manage.py shell
+
+>>> from main.tv_shows import dump_tv_shows
+>>> dump_tv_shows()
+
+This should populate your DB with the TV Shows.
